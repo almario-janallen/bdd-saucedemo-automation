@@ -1,5 +1,6 @@
 package runner;
 
+import base.BaseTest;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
@@ -8,6 +9,7 @@ import io.cucumber.testng.CucumberOptions;
         glue = {"hooks", "stepdefs"},
         plugin = {"pretty", "html:target/cucumber-reports/report.html"}
 )
-public class CucumberRunner extends AbstractTestNGCucumberTests {
-    // empty
+public class CucumberRunner extends BaseTest {
+    // gets AbstractTestNGCucumberTests through BaseTest
+    // gets suite logging through BaseTest
 }

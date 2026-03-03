@@ -35,4 +35,16 @@ public class DriverFactory {
         driver.set(webDriver);
         log.info("Browser initialized successfully");
     }
+
+    public static WebDriver getDriver() {
+        return driver.get();
+    }
+
+    public static void quitDriver() {
+        if (driver.get() != null) {
+            log.info("Closing browser");
+            driver.get().quit();
+            driver.remove();
+        }
+    }
 }
