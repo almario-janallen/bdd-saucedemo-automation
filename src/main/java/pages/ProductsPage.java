@@ -29,5 +29,5 @@ public class ProductsPage extends BasePage{
     public String getCartCount() {
         return waitForElement(cartBadge).getText();
     }
-    
+
 }
