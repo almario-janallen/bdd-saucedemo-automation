@@ -24,7 +24,7 @@ public class Hooks {
         driver.manage().window().maximize();
         driver.manage().timeouts()
                 .implicitlyWait(Duration.ofSeconds(
-                        Integer.parseInt(ConfigReader.get("implicit.wait"))
+                        Long.parseLong(ConfigReader.get("implicit.wait"))
                 ));
         driver.get(ConfigReader.get("base.url"));
         log.info("Browser launched and navigated to: {}", ConfigReader.get("base.url"));
