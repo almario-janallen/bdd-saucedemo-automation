@@ -5,11 +5,11 @@ import org.openqa.selenium.WebDriver;
 
 public class ProductsPage extends BasePage{
     private By addToCartButtonFor(String productName) {
-        return By.xpath("//div[text()='" + productName+ "']/ancestor::div[@class='inventory_item']//button");
+        return By.xpath("//div[text()='" + productName+ "']/ancestor::div[@class='inventory_item']//button[text()='Remove']");
     }
 
     private By removeButtonFor(String productName) {
-        return By.xpath("//div[text()='" + productName+ "']/ancestor::div[@class='inventory_item']//button");
+        return By.xpath("//div[text()='" + productName+ "']/ancestor::div[@class='inventory_item']//button[text()='Remove']");
     }
 
     private final By cartBadge = By.cssSelector(".shopping_cart_badge");
