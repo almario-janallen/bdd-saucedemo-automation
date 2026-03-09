@@ -33,6 +33,11 @@ public class LoginSteps {
         loginPage.clickLogin();
     }
 
+    @When("I accept change password alert")
+    public void iAcceptChangePasswordAlert() {
+        loginPage.acceptAlert();
+    }
+
     @Then("I should be redirected to the products page")
     public void iShouldBeRedirectedToTheProductsPage() {
         String currentUrl = DriverFactory.getDriver().getCurrentUrl();

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ProductsPage extends BasePage{
     private By addToCartButtonFor(String productName) {
-        return By.xpath("//div[text()='" + productName+ "']/ancestor::div[@class='inventory_item']//button[text()='Remove']");
+        return By.xpath("//div[text()='" + productName+ "']/ancestor::div[@class='inventory_item']//button[text()='Add to cart']");
     }
 
     private By removeButtonFor(String productName) {
@@ -28,6 +28,10 @@ public class ProductsPage extends BasePage{
 
     public String getCartCount() {
         return waitForElement(cartBadge).getText();
+    }
+
+    public boolean isCartEmpty() {
+        return driver.findElements(cartBadge).isEmpty();
     }
 
 }

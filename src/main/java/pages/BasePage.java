@@ -1,6 +1,7 @@
 package pages;
 
 import config.ConfigReader;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,5 +36,30 @@ public class BasePage {
         WebElement element = waitForElement(locator);
         element.clear();
         element.sendKeys(text);
+    }
+
+    public void acceptAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.accept();
+    }
+
+    public void dismissAlert() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.dismiss();
+    }
+
+    public String getAlertText() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        return alert.getText();
+    }
+
+    public void typeInAlert(String text) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        Alert alert = wait.until(ExpectedConditions.alertIsPresent());
+        alert.sendKeys(text);
+        alert.accept();
     }
 }

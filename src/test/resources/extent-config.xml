@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- Report theme: standard or dark -->
+        <theme>standard</theme>
+
+        <!-- Document encoding -->
+        <encoding>UTF-8</encoding>
+
+        <!-- Report title shown in browser tab -->
+        <documentTitle>SauceDemo Test Report</documentTitle>
+
+        <!-- Report name shown in the report header -->
+        <reportName>SauceDemo Automation Report</reportName>
+
+        <!-- Timestamp format for report entries -->
+        <timeStampFormat>MMM dd, yyyy HH:mm:ss</timeStampFormat>
+    </configuration>
+</extentreports>

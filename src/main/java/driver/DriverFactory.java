@@ -6,7 +6,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import java.util.Arrays;
+import java.util.Map;
 
 public class DriverFactory {
 
@@ -22,7 +26,14 @@ public class DriverFactory {
         switch (browser) {
             case "chrome":
                 WebDriverManager.chromedriver().setup();
-                webDriver = new ChromeDriver();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--disable-save-password-bubble");
+                options.setExperimentalOption("prefs", Map.of(
+                        "credentials_enable_service", false,
+                        "profile.password_manager_enabled", false,
+                        "profile.password_manager_leak_detection",false
+                ));
+                webDriver = new ChromeDriver(options);
                 break;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();

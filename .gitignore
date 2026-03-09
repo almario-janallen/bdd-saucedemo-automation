@@ -36,3 +36,15 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Logs
+logs/
+
+# WebDriverManager cache
+.wdm/
+
+# Cucumber/test reports (regenerated on each run)
+target/cucumber-reports/
+
+#TestNG output
+test-output/

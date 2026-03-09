@@ -16,7 +16,7 @@ public class CheckoutPage extends BasePage{
 
     //Step three - Complete page
     private final By homeButton = By.id("back-to-products");
-    private final By confirmationMessage = By.cssSelector(".complete-text");
+    private final By confirmationMessage = By.cssSelector(".complete-header");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);

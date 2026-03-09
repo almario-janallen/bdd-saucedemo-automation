@@ -16,4 +16,4 @@ Feature: Product Catalog
   Scenario: User can remove a product from the cart
     Given I have added product "Sauce Labs Backpack" to the cart
     When I remove product "Sauce Labs Backpack" from the cart
-    Then the cart count should be "0"
+    Then the cart should be empty

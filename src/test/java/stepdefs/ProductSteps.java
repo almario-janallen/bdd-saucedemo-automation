@@ -40,7 +40,7 @@ public class ProductSteps {
     }
 
     @Then("the cart count should be {string}")
-    public void theCartCountShouldBe(String expectedCount) {
+    public void theCartShouldBeEmpty(String expectedCount) {
         if(expectedCount.equals("0")) {
             boolean cartBadgeGone = productsPage.getCartCount().isEmpty();
             Assert.assertTrue(cartBadgeGone, "Expected cart to be empty but found: " + productsPage.getCartCount());
@@ -48,5 +48,10 @@ public class ProductSteps {
             String actualCount = productsPage.getCartCount();
             Assert.assertEquals(actualCount, expectedCount, "Cart count mismatch");
         }
+    }
+
+    @Then("the cart should be empty")
+    public void theCartShouldBeEmpty() {
+        Assert.assertTrue(productsPage.isCartEmpty(),"Expected cart to be empty but badge was still visible");
     }
 }
