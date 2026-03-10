@@ -1,5 +1,6 @@
 package stepdefs;
 
+import config.ConfigReader;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -11,9 +12,13 @@ public class LoginSteps {
 
     private LoginPage loginPage;
 
+    public LoginSteps() {
+        loginPage = new LoginPage(DriverFactory.getDriver());
+    }
+
     @Given("I am on the login page")
     public void iAmOnTheLoginPage() {
-        loginPage = new LoginPage(DriverFactory.getDriver());
+        // no steps here since it is handled in Hooks.java
     }
 
     @When("I enter username {string}")
@@ -30,6 +35,13 @@ public class LoginSteps {
 
     @When("I click the login button")
     public void iClickTheLoginButton() {
+        loginPage.clickLogin();
+    }
+
+    @Given("I log in with valid credentials")
+    public void iLogInWithValidCredentials() {
+        loginPage.enterUsername(ConfigReader.get("username"));
+        loginPage.enterPassword(ConfigReader.get("password"));
         loginPage.clickLogin();
     }
 

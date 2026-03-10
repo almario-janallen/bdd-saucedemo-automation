@@ -5,19 +5,10 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
-import pages.LoginPage;
 import pages.ProductsPage;
 
 public class ProductSteps {
     private ProductsPage productsPage;
-
-    @Given("I am logged in as {string} with password {string}")
-    public void iAmLoggedInAs(String username, String password) {
-        LoginPage loginPage = new LoginPage(DriverFactory.getDriver());
-        loginPage.enterUsername(username);
-        loginPage.enterPassword(password);
-        loginPage.clickLogin();
-    }
 
     @Given("I am on the products page")
     public void iAmOnTheProductsPage() {

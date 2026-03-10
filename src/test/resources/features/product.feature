@@ -4,7 +4,7 @@ Feature: Product Catalog
   So that I can prepare my order before checkout
 
   Background:
-    Given I am logged in as "standard_user" with password "secret_sauce"
+    Given I log in with valid credentials
     And I am on the products page
 
   @smoke @regression

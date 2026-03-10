@@ -5,7 +5,7 @@ Feature: Checkout
 
   @smoke @regression
   Scenario: User can complete a full end-to-end purchase
-    Given I am logged in as "standard_user" with password "secret_sauce"
+    Given I log in with valid credentials
     And I am on the products page
     When I add product "Sauce Labs Backpack" to the cart
     And I navigate to the cart

@@ -8,9 +8,7 @@ Feature: User Login
 
   @smoke @regression
   Scenario: Valid user can log in successfully
-    When I enter username "standard_user"
-    And I enter password "secret_sauce"
-    And I click the login button
+    When I log in with valid credentials
     Then I should be redirected to the products page
 
   @regression
