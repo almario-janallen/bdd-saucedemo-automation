@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -19,7 +20,8 @@ public class DriverFactory {
 
     public static void initDriver() {
         String browser = ConfigReader.get("browser").toLowerCase();
-        log.info("Initializing browser:" + browser);
+        boolean headless = Boolean.parseBoolean(System.getProperty("headless", "false"));
+        log.info("Initializing browser: " + browser + " | Headless: " + headless);
 
         WebDriver webDriver;
 
@@ -31,13 +33,22 @@ public class DriverFactory {
                 options.setExperimentalOption("prefs", Map.of(
                         "credentials_enable_service", false,
                         "profile.password_manager_enabled", false,
-                        "profile.password_manager_leak_detection",false
+                        "profile.password_manager_leak_detection", false
                 ));
+                if (headless) {
+                    options.addArguments("--headless");
+                    options.addArguments("--no-sandbox");
+                    options.addArguments("--disable-dev-shm-usage");
+                }
                 webDriver = new ChromeDriver(options);
                 break;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
-                webDriver = new FirefoxDriver();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                if (headless) {
+                    firefoxOptions.addArguments("--headless");
+                }
+                webDriver = new FirefoxDriver(firefoxOptions);
                 break;
             default:
                 throw new RuntimeException("Browser not supported: " + browser);
